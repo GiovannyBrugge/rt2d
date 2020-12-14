@@ -6,8 +6,7 @@
 
 	MyPlayer::MyPlayer() : Entity()
 	{
-		
-		playerVelocity = new Vector2(30,30);
+		playerVelocity = new Vector2(1.0f,0.0f);
 		this->addSprite("assets/square.tga");
 		this->sprite()->color = BLUE;
 	}
@@ -19,8 +18,8 @@
 
 void MyPlayer::update(float deltaTime)
 {
-	
-	
+	this->position.x += playerVelocity->x;
+	this->position.y += playerVelocity->y;
 }
 
 

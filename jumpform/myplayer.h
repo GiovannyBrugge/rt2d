@@ -5,6 +5,8 @@
 class MyPlayer: public Entity
 {
 public:
+
+	
 	/// @brief Constructor
 	MyPlayer();
 	/// @brief Destructor
@@ -14,9 +16,10 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-
-private:
 	Vector2* playerVelocity;
+	Vector2* playerAcceleration;
+private:
+	
 
 	/* add your private declarations */
 };

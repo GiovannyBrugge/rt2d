@@ -44,13 +44,24 @@ void MyScene::update(float deltaTime)
 	}
 
 	// ###############################################################
-	// Spacebar scales myentity
+	// D moves myplayer to the right
 	// ###############################################################
-	if (input()->getKeyDown(KeyCode::Space)) {
-		myplayer->scale = Point(0.5f, 0.5f);
+	if (input()->getKey(KeyCode::D)) {
+		myplayer->position.x += myplayer->playerVelocity->x = 1.0f;
 	}
-	if (input()->getKeyUp(KeyCode::Space)) {
-		myplayer->scale = Point(1.0f, 1.0f);
+	if (input()->getKeyUp(KeyCode::D)) {
+		myplayer->position.x += myplayer->playerVelocity->x = 0.0f;
 	}
+
+	// ###############################################################
+	// A moves myplayer to the left
+	// ###############################################################
+	if (input()->getKey(KeyCode::A)) {
+		myplayer->position.x += myplayer->playerVelocity->x = -1.0f;
+	}
+	if (input()->getKeyUp(KeyCode::A)) {
+		myplayer->position.x += myplayer->playerVelocity->x = 0.0f;
+	}
+
 
 }

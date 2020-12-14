@@ -7,6 +7,7 @@
 	MyPlayer::MyPlayer() : Entity()
 	{
 		playerVelocity = new Vector2(0.0f,0.0f);
+		playerAcceleration = new Vector2(0.0f, 0.0f);
 		this->addSprite("assets/square.tga");
 		this->sprite()->color = BLUE;
 	}

@@ -17,11 +17,14 @@ MyScene::MyScene() : Scene()
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 	myplayer = new MyPlayer();
+	myplatform = new MyPlatform();
+	
 	myplayer->position = Point2(100,500);
-
+	myplatform->position = Point2(500, 500);
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myplayer);
+	this->addChild(myplatform);
 }
 
 
@@ -36,6 +39,8 @@ MyScene::~MyScene()
 
 void MyScene::update(float deltaTime)
 {
+
+	
 	// ###############################################################
 	// Escape key stops the Scene
 	// ###############################################################

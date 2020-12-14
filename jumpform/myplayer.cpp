@@ -4,20 +4,23 @@
 #include "myplayer.h"
 
 
-MyPlayer::MyPlayer() : Entity()
-{
-	this->addSprite("assets/square.tga");
-	this->sprite()->color = BLUE;
-}
+	MyPlayer::MyPlayer() : Entity()
+	{
+		
+		playerVelocity = new Vector2(30,30);
+		this->addSprite("assets/square.tga");
+		this->sprite()->color = BLUE;
+	}
 
-MyPlayer::~MyPlayer()
-{
-
-}
+	MyPlayer::~MyPlayer()
+	{
+		delete playerVelocity;
+	}
 
 void MyPlayer::update(float deltaTime)
 {
-
+	
+	
 }
 
 

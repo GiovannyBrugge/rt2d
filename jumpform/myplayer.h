@@ -16,6 +16,8 @@ public:
 	virtual void update(float deltaTime);
 
 private:
+	Vector2* playerVelocity;
+
 	/* add your private declarations */
 };
 

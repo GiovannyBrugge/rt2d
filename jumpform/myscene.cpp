@@ -17,7 +17,7 @@ MyScene::MyScene() : Scene()
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 	myplayer = new MyPlayer();
-	myplayer->position = Point2(SWIDTH/2, SHEIGHT/2);
+	myplayer->position = Point2(100,500);
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.

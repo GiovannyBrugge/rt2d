@@ -10,9 +10,10 @@
 #define MYSCENE_H
 
 #include <rt2d/scene.h>
-
 #include "myplayer.h"
 #include "myplatform.h"
+
+
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
 {

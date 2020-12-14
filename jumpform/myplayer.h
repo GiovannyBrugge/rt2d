@@ -18,6 +18,9 @@ public:
 	virtual void update(float deltaTime);
 	Vector2* playerVelocity;
 	Vector2* playerAcceleration;
+	Vector2* playerGravity;
+	bool isGrounded;
+	
 private:
 	
 

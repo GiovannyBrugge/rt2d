@@ -39,54 +39,11 @@ MyScene::~MyScene()
 
 void MyScene::update(float deltaTime)
 {
-
-
 	// ###############################################################
 	// Escape key stops the Scene
 	// ###############################################################
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
 	}
-
-	//applies gravity to the player
-	myplayer->position.y += myplayer->playerGravity->y;
-	
-
-	// ###############################################################
-	// D moves myplayer to the right
-	// ###############################################################
-	if (input()->getKey(KeyCode::D)) {
-		myplayer->position.x += myplayer->playerVelocity->x = 1.0f;
-	}
-	if (input()->getKeyUp(KeyCode::D)) {
-		myplayer->position.x += myplayer->playerVelocity->x = 0.0f;
-	}
-
-	// ###############################################################
-	// A moves myplayer to the left
-	// ###############################################################
-	if (input()->getKey(KeyCode::A)) {
-		myplayer->position.x += myplayer->playerVelocity->x = -1.0f;
-	}
-	if (input()->getKeyUp(KeyCode::A)) {
-		myplayer->position.x += myplayer->playerVelocity->x = 0.0f;
-	}
-	// ###############################################################
-	// Spacebar jumps the myplayer up
-	// ###############################################################
-	if (myplayer->isGrounded == true) {
-
-		if (input()->getKeyDown(KeyCode::Space)) {
-			myplayer->position.y -= 200;
-			myplayer->isGrounded = false;
-		}
-	}
-	// checks if player touches the ground
-	if (myplayer->position.y >= 650) {
-		myplayer->position.y -= myplayer->playerGravity->y;
-		myplayer->isGrounded = true;
-	}
-
-	
 
 }

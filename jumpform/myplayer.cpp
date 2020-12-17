@@ -11,6 +11,8 @@
 		playerAcceleration = new Vector2(0.0f, 0.0f);
 		playerGravity = new Vector2(0.0f, 1.0f);
 		isGrounded = true;
+		isJumping = false;
+		JumpForce = 0.0f;
 		this->addSprite("assets/square.tga");
 		this->sprite()->color = BLUE;
 	}
@@ -25,46 +27,50 @@
 void MyPlayer::update(float deltaTime)
 {
 	//applies gravity to the player
-	this->position.y += this->playerGravity->y;
-
+	this->position.y += this->playerGravity->y - this->JumpForce * deltaTime;
+	 
 
 	// ###############################################################
 	// D moves myplayer to the right
 	// ###############################################################
 	if (input()->getKey(KeyCode::D)) {
-		this->position.x += this->playerVelocity->x = 1.0f;
+		this->position.x += this->playerVelocity->x = 600.0f * deltaTime;
 	}
 	if (input()->getKeyUp(KeyCode::D)) {
-		this->position.x += this->playerVelocity->x = 0.0f;
+		this->position.x += this->playerVelocity->x = 0.0f * deltaTime;
 	}
 
 	// ###############################################################
 	// A moves myplayer to the left
 	// ###############################################################
 	if (input()->getKey(KeyCode::A)) {
-		this->position.x += this->playerVelocity->x = -1.0f;
+		this->position.x += this->playerVelocity->x = -600.0f * deltaTime;
 	}
 	if (input()->getKeyUp(KeyCode::A)) {
-		this->position.x += this->playerVelocity->x = 0.0f;
+		this->position.x += this->playerVelocity->x = 0.0f * deltaTime;
 	}
 	// ###############################################################
 	// Spacebar jumps the myplayer up
 	// ###############################################################
-	if (this->isGrounded == true) {
+	
 
-		if (input()->getKeyDown(KeyCode::Space)) {
-			this->position.y -= 200;
-			this->isGrounded = false;
-		}
+	if (input()->getKeyDown(KeyCode::Space) && isGrounded && !isJumping) {
+		this->JumpForce = 2800.0f;
+		this->isJumping = true;
+		this->isGrounded = false;
 	}
+
+	if (this->JumpForce > 0.0f) {
+		this->JumpForce -= 28.0f;	
+	}
+		
 	// checks if player touches the ground
 	if (this->position.y >= 650) {
 		this->position.y -= this->playerGravity->y;
 		this->isGrounded = true;
+		this->isJumping = false;
 	}
-	//this->position.x += playerVelocity->x = 1.0f;
-	//this->position.y += playerVelocity->y;
-	
+		
 }
 
 

@@ -156,8 +156,6 @@ file(
 IF(MAKE_JUMPFORM)
 	add_executable(jumpform
 		jumpform/main.cpp
-		
-		
 		jumpform/myscene.cpp
 		jumpform/myscene.h
 	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" )
@@ -181,7 +179,7 @@ IF(MAKE_START)
 		start/myentity.h
 		start/myscene.cpp
 		start/myscene.h
-	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" )
+		)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}
 	)

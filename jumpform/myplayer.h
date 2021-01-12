@@ -21,7 +21,7 @@ public:
 	Vector2* playerGravity;
 	bool isGrounded;
 	bool isJumping;
-	float JumpForce;
+	
 private:
 	
 

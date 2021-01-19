@@ -16,12 +16,15 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	Vector2* playerVelocity;
-	Vector2* playerAcceleration;
-	Vector2* playerGravity;
+	// player nog weghalen
+	Vector2 playerVelocity;
+	Vector2 playerAcceleration;
+	Vector2 playerGravity;
+	Vector2 playerJumpForce;
 	bool isGrounded;
 	bool isJumping;
-	
+	void applyForce(Vector2 force);
+
 private:
 	
 

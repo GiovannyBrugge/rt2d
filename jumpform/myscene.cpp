@@ -19,7 +19,7 @@ MyScene::MyScene() : Scene()
 	myplayer = new MyPlayer();
 	myplatform = new MyPlatform();
 	
-	myplayer->position = Point2(100,650);
+	myplayer->position = Point2(100,300);
 	myplatform->position = Point2(500, 650);
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.

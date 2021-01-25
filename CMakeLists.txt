@@ -14,7 +14,7 @@ OPTION(MAKE_NOISE "Make Perlin Noise application" OFF)
 OPTION(MAKE_GEOMETRIC "Make GeoMetric application" OFF)
 OPTION(MAKE_SHADY "Make custom Shader application" OFF)
 OPTION(MAKE_WOLFENSTEIN "Make Wolfenstein3D raycasting application" OFF)
-OPTION(MAKE_COLLISION "Make Collision application" OFF)
+OPTION(MAKE_COLLISION "Make Collision application" ON)
 OPTION(MAKE_DEBUGDRAW "Make DebugDraw application" OFF)
 OPTION(MAKE_RAYCAST "Make Raycast application" OFF)
 OPTION(MAKE_MATRIXPIXEL "Make MatrixPixel application" OFF)
@@ -139,7 +139,7 @@ add_library(rt2d
 	rt2d/util.c
 	rt2d/util.h
 	rt2d/vectorx.h
- "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" )
+ "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h")
 file(
 	COPY ${CMAKE_SOURCE_DIR}/rt2d/shaders
 	DESTINATION ${CMAKE_BINARY_DIR}
@@ -158,7 +158,7 @@ IF(MAKE_JUMPFORM)
 		jumpform/main.cpp
 		jumpform/myscene.cpp
 		jumpform/myscene.h
-	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" )
+	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h")
 	target_link_libraries(jumpform
 		${ALL_GRAPHICS_LIBS}
 	)

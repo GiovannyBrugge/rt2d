@@ -5,66 +5,95 @@
 
 MyPlayer::MyPlayer() : Entity()
 {
-	playerVelocity =  Vector2(0.0f,0.0f);
-	playerAcceleration = Vector2(0.0f, 0.0f);
-	playerGravity =  Vector2(0.0f, 0.0001f);
-	playerJumpForce = Vector2(0.0f, -1000.0f);
+	
 	isGrounded = true;
 	isJumping = false;
+	velocity =  Vector2(0.0f,0.0f);
+	acceleration = Vector2(0.0f, 0.0f);
+	gravity =  Vector2(0.0f, 0.1f);
+	jumpForce = Vector2(0.0f, -8.0f);
+	moveForce = Vector2(0.0f, 0.0f);
+	movementSpeed = 0.1f;
+	StopSpeed = 0.0f;
 	this->addSprite("assets/square.tga");
 	this->sprite()->color = BLUE;
+	
+	/*c = 0.01f;
+	friction = getCopy(velocity);
+	friction * -1;
+	friction.normalize();
+	friction* c;
+	normal = 0.0f;*/
 }
 
 MyPlayer::~MyPlayer()
 {
-	
+
 }
 
 void MyPlayer::update(float deltaTime)
 {
-	//applies gravity to the acceleration
-	applyForce(playerGravity);
-
-	//applies acceleration to the player velocity
-	this->playerVelocity += this->playerAcceleration;
-
-	//applies velocity to the player movement
-	this->position += this->playerVelocity;
-
+	// checks if player touches the ground
+	if (position.y > SHEIGHT - 65) {
+		position.y = SHEIGHT - 65;
+		velocity.y *= -0;
+		isGrounded = true;
+		isJumping = false;
+	}
 
 	// D moves myplayer to the right
 	if (input()->getKey(KeyCode::D)) {
-		this->playerVelocity.x = 600.0f * deltaTime;
+		moveForce.x += movementSpeed * deltaTime;
+		
 	}
 	if (input()->getKeyUp(KeyCode::D)) {
-		this->playerVelocity.x = 0.0f * deltaTime;
+		moveForce.x = StopSpeed * deltaTime;
 	}
 
 	// A moves myplayer to the left
 	if (input()->getKey(KeyCode::A)) {
-		this->playerVelocity.x = -600.0f * deltaTime;
+		moveForce.x += -movementSpeed * deltaTime;
+		
 	}
 	if (input()->getKeyUp(KeyCode::A)) {
-		this->playerVelocity.x = 0.0f * deltaTime;
+		moveForce.x = StopSpeed * deltaTime;
+
 	}
 	
 	// Spacebar jumps the myplayer up
 	if (input()->getKeyDown(KeyCode::Space) && isGrounded && !isJumping) {
-		this->applyForce(playerJumpForce);
-		this->isJumping = true;
-		this->isGrounded = false;
+		isJumping = true;
+		isGrounded = false;
+		applyForce(jumpForce);
 	}
 
-	// checks if player touches the ground
-	if (this->position.y >= 650) {
-		this->position.y -= this->playerGravity.y;
-		this->isGrounded = true;
-		this->isJumping = false;
-	}
-	playerAcceleration = Vector2(0, 0);
+	/*//applies friction to acceleration
+	applyForce(friction);
+	*/
+	//applies gravity to the acceleration
+	applyForce(gravity);
+
+	//applies force to the leff/right movement
+	applyForce(moveForce);
+
+	//applies acceleration to the player velocity
+	velocity += acceleration;
+
+	//applies velocity to the player movement
+	position += velocity;
+
+	acceleration = Vector2(0, 0);
+	
 }
 
 void MyPlayer::applyForce(Vector2 force) {
-	playerAcceleration += force;
+	acceleration += force;
+	
 }
+
+Vector2 MyPlayer::getCopy(Vector2 copy) {
+	return Vector2(copy.x, copy.y);
+
+}
+
 

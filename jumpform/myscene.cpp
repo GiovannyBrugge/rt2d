@@ -66,11 +66,11 @@ void MyScene::update(float deltaTime)
 		myplayer->sprite()->color = RED;
 		myplatform->sprite()->color = RED;
 		
-		/*
-		myplayer->position.y = SHEIGHT - 65;
-		myplayer->velocity.y *= -0;
-		myplayer->isGrounded = true;
-		myplayer->isJumping = false;
-	*/	
+		if (Collider::rectangle2rectangle(rect1, rect2)) {
+			myplayer->position.y = myplatform->position.y - 125;
+			myplayer->velocity.y *= -0;
+			myplayer->isGrounded = true;
+			myplayer->isJumping = false;
+		}
 	}
 }

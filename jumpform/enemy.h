@@ -1,23 +1,23 @@
-#ifndef MYPLAYER_H
-#define MYPLAYER_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include <rt2d/entity.h>
-class MyPlayer: public Entity
+class Enemy : public Entity
 {
 public:
 
-	
+
 	/// @brief Constructor
-	MyPlayer();
+	Enemy();
 	/// @brief Destructor
-	virtual ~MyPlayer();
+	virtual ~Enemy();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	
-	
+
+
 	float movementSpeed;
 	float StopSpeed;
 	float c;
@@ -25,7 +25,6 @@ public:
 	float frictionMag;
 	bool isGrounded;
 	bool isJumping;
-	bool isDead;
 	Vector2 velocity;
 	Vector2 acceleration;
 	Vector2 gravity;
@@ -36,9 +35,9 @@ public:
 	Vector2 getCopy(Vector2 copy);
 
 private:
-	
+
 
 	/* add your private declarations */
 };
 
-#endif /* MYPLAYER_H */
+#endif /* ENEMY */

@@ -139,7 +139,7 @@ add_library(rt2d
 	rt2d/util.c
 	rt2d/util.h
 	rt2d/vectorx.h
- "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h")
+ "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h""jumpform/enemy.cpp" "jumpform/enemy.h")
 file(
 	COPY ${CMAKE_SOURCE_DIR}/rt2d/shaders
 	DESTINATION ${CMAKE_BINARY_DIR}
@@ -158,7 +158,7 @@ IF(MAKE_JUMPFORM)
 		jumpform/main.cpp
 		jumpform/myscene.cpp
 		jumpform/myscene.h
-	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h")
+	 "jumpform/myplayer.cpp" "jumpform/myplayer.h" "jumpform/myplatform.cpp" "jumpform/myplatform.h" "jumpform/collider.h" "jumpform/enemy.cpp" "jumpform/enemy.h")
 	target_link_libraries(jumpform
 		${ALL_GRAPHICS_LIBS}
 	)

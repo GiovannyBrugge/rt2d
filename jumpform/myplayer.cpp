@@ -6,12 +6,10 @@
 MyPlayer::MyPlayer() : Entity()
 {
 	
-	isGrounded = true;
-	isJumping = false;
 	velocity =  Vector2(0.0f,0.0f);
 	acceleration = Vector2(0.0f, 0.0f);
 	gravity =  Vector2(0.0f, 0.1f);
-	jumpForce = Vector2(0.0f, -8.0f);
+	jumpForce = Vector2(0.0f, -1200.0f);
 	moveForce = Vector2(0.0f, 0.0f);
 	movementSpeed = 0.1f;
 	StopSpeed = 0.0f;
@@ -40,6 +38,18 @@ void MyPlayer::update(float deltaTime)
 		isGrounded = true;
 		isJumping = false;
 	}
+	// checks if player touches the right wall
+	if (position.x > SWIDTH - 65) {
+		position.x = SWIDTH - 65;
+		velocity.x *= -0;
+	
+	}
+	// checks if player touches the left wall
+	if (position.x < 0 + 65) {
+		position.x = 0 + 65;
+		velocity.x *= -0;
+
+	}
 
 	// D moves myplayer to the right
 	if (input()->getKey(KeyCode::D)) {
@@ -62,9 +72,10 @@ void MyPlayer::update(float deltaTime)
 	
 	// Spacebar jumps the myplayer up
 	if (input()->getKeyDown(KeyCode::Space) && isGrounded && !isJumping) {
+		applyForce(jumpForce * deltaTime);
 		isJumping = true;
 		isGrounded = false;
-		applyForce(jumpForce);
+		
 	}
 
 	/*//applies friction to acceleration

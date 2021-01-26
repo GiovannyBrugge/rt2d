@@ -10,7 +10,7 @@ Enemy::Enemy() : Entity()
 	gravity = Vector2(0.0f, 0.1f);
 	jumpForce = Vector2(0.0f, -1200.0f);
 	moveForce = Vector2(0.0f, 0.0f);
-	movementSpeed = 0.1f;
+	movementSpeed = 0.01f;
 	StopSpeed = 0.0f;
 	this->addSprite("assets/square.tga");
 	this->sprite()->color = BLUE;
@@ -26,13 +26,13 @@ Enemy::Enemy() : Entity()
 
 Enemy::~Enemy()
 {
-
+	
 }
 
 void Enemy::update(float deltaTime)
 {
-
-
+	
+	
 	// checks if player touches the ground
 	if (position.y > SHEIGHT - 65) {
 		position.y = SHEIGHT - 65;
@@ -54,8 +54,8 @@ void Enemy::update(float deltaTime)
 	// checks if player touches the left wall
 	if (position.x < 0 + 65) {
 		position.x = 0 + 65;
-		velocity.x *= -0;
-
+		velocity.x *= -0;		
+		
 	}
 	
 	
@@ -84,9 +84,21 @@ void Enemy::applyForce(Vector2 force) {
 
 }
 
+/*void Enemy::walkLeft(float deltaTime) {
+	moveForce.x += -movementSpeed * deltaTime;
+}
+
+void Enemy::walkRight(float deltaTime) {
+	
+	moveForce.x += movementSpeed * deltaTime;
+}
+
+void Enemy::stopMovement(float deltaTime) {
+	
+	moveForce.x *= 0;
+}*/
 Vector2 Enemy::getCopy(Vector2 copy) {
 	return Vector2(copy.x, copy.y);
 
 }
-
 

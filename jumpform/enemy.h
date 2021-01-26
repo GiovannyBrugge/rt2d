@@ -17,7 +17,6 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-
 	float movementSpeed;
 	float StopSpeed;
 	float c;
@@ -32,6 +31,9 @@ public:
 	Vector2 moveForce;
 	Vector2 friction;
 	void applyForce(Vector2 force);
+	void walkLeft(float deltaTime);
+	void walkRight(float deltaTime);
+	void stopMovement(float deltaTime);
 	Vector2 getCopy(Vector2 copy);
 
 private:

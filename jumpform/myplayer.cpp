@@ -13,7 +13,7 @@ MyPlayer::MyPlayer() : Entity()
 	movementSpeed = 0.1f;
 	StopSpeed = 0.0f;
 	this->addSprite("assets/square.tga");
-	this->sprite()->color = BLUE;
+	
 	/*
 	c = 0.01f;
 	friction = getCopy(velocity);
@@ -100,7 +100,6 @@ void MyPlayer::update(float deltaTime)
 	position += velocity;
 
 	acceleration = Vector2(0, 0);
-	
 }
 
 void MyPlayer::applyForce(Vector2 force) {

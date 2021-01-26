@@ -17,7 +17,6 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 	
-	
 	float movementSpeed;
 	float StopSpeed;
 	float c;

@@ -7,8 +7,8 @@ MyPlayer::MyPlayer() : Entity()
 {
 	velocity =  Vector2(0.0f,0.0f);
 	acceleration = Vector2(0.0f, 0.0f);
-	gravity =  Vector2(0.0f, 0.1f);
-	jumpForce = Vector2(0.0f, -1200.0f);
+	gravity =  Vector2(0.0f, 25.0f);
+	jumpForce = Vector2(0.0f, -1600.0f);
 	moveForce = Vector2(0.0f, 0.0f);
 	movementSpeed = 0.1f;
 	StopSpeed = 0.0f;
@@ -59,26 +59,26 @@ void MyPlayer::update(float deltaTime)
 
 	// D moves myplayer to the right
 	if (input()->getKey(KeyCode::D)) {
-		moveForce.x += movementSpeed * deltaTime;
+		moveForce.x += movementSpeed ;
 		
 	}
 	if (input()->getKeyUp(KeyCode::D)) {
-		moveForce.x = StopSpeed * deltaTime;
+		moveForce.x = StopSpeed;
 	}
 
 	// A moves myplayer to the left
 	if (input()->getKey(KeyCode::A)) {
-		moveForce.x += -movementSpeed * deltaTime;
+		moveForce.x += -movementSpeed ;
 		
 	}
 	if (input()->getKeyUp(KeyCode::A)) {
-		moveForce.x = StopSpeed * deltaTime;
+		moveForce.x = StopSpeed ;
 
 	}
 	
 	// Spacebar jumps the myplayer up
 	if (input()->getKeyDown(KeyCode::Space) && isGrounded && !isJumping) {
-		applyForce(jumpForce * deltaTime);
+		applyForce(jumpForce);
 		isJumping = true;
 		isGrounded = false;
 		
@@ -97,7 +97,7 @@ void MyPlayer::update(float deltaTime)
 	velocity += acceleration;
 
 	//applies velocity to the player movement
-	position += velocity;
+	position += velocity * deltaTime;
 
 	acceleration = Vector2(0, 0);
 }
@@ -107,9 +107,10 @@ void MyPlayer::applyForce(Vector2 force) {
 	
 }
 
+/*
 Vector2 MyPlayer::getCopy(Vector2 copy) {
 	return Vector2(copy.x, copy.y);
 
-}
+}*/
 
 

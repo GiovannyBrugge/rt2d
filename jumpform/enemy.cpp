@@ -12,8 +12,8 @@ Enemy::Enemy() : Entity()
 	moveForce = Vector2(0.0f, 0.0f);
 	movementSpeed = 0.01f;
 	StopSpeed = 0.0f;
-	this->addSprite("assets/square.tga");
-	this->sprite()->color = BLUE;
+	this->addSprite("assets/enemy.tga");
+	
 	/*
 	c = 0.01f;
 	friction = getCopy(velocity);
@@ -34,8 +34,8 @@ void Enemy::update(float deltaTime)
 	
 	
 	// checks if player touches the ground
-	if (position.y > SHEIGHT - 65) {
-		position.y = SHEIGHT - 65;
+	if (position.y > SHEIGHT - 33.5) {
+		position.y = SHEIGHT - 33.5;
 		velocity.y *= -0;
 		isGrounded = true;
 		isJumping = false;

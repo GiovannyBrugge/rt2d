@@ -6,7 +6,7 @@
 
 MyPlatform::MyPlatform() : Entity()
 {
-	this->addSprite("assets/square.tga");
+	this->addSprite("assets/platform.tga");
 	
 }
 

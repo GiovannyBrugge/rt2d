@@ -23,9 +23,12 @@ MyScene::MyScene() : Scene()
 	enemy->position = Point2(1000, 550);
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
+
 	this->addChild(myplayer);
 	this->addChild(enemy);
 	this->addChild(myplatform);
+
+
 }
 
 MyScene::~MyScene()
@@ -71,27 +74,26 @@ void MyScene::update(float deltaTime)
 		enemy->moveForce = Point2(0, 0);	
 	}
 	// create shapes ('colliders')
-	Rectangle rect1 = Rectangle(myplayer->position.x, myplayer->position.y, 125, 125);
-	Rectangle rect2 = Rectangle(myplatform->position.x, myplatform->position.y, 125, 125);
-	Rectangle rect3 = Rectangle(enemy->position.x, enemy->position.y, 125, 125);
+	Rectangle rect1 = Rectangle(myplayer->position.x, myplayer->position.y, 125, 100);
+	Rectangle rect2 = Rectangle(myplatform->position.x, myplatform->position.y, 150, 62.5);
+	Rectangle rect3 = Rectangle(enemy->position.x, enemy->position.y, 62.5, 62.5);
 	// reset colors
-	myplayer->sprite()->color = GREEN;
+	
 	myplatform->sprite()->color = BLACK;
 	enemy->sprite()->color = RED;
 	if (Collider::rectangle2rectangle(rect1, rect2)) {
-		myplayer->sprite()->color = GREEN;
-		myplatform->sprite()->color = BLUE;
-		myplayer->position.y = myplatform->position.y - 125;
+		
+		myplayer->position.y = myplatform->position.y - 100;
 		myplayer->velocity.y *= -0;
 		myplayer->isGrounded = true;
 		myplayer->isJumping = false;
 		
 	}
 	if (Collider::rectangle2rectangle(rect1, rect3)) {
-		myplayer->sprite()->color = RED;
+		
 		enemy->sprite()->color = RED;
 		myplayer->isDead = true;
-		myplayer->position = Point2(100, 300);
+		myplayer->position = Point2(200, 300);
 	}
 
 	if (myplayer->isDead == true) {
